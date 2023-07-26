@@ -37,7 +37,6 @@
 }
 .buttonWrapper{
     display: flex;
-   margin-left: 60px;
 }
 
 .wrapperInputError{
