@@ -1,19 +1,18 @@
 import React from 'react';
 import s from './Counter.module.css'
 import {SuperButton} from "./SuperButton";
-import {NavLink} from "react-router-dom";
 
 type CounterPropsType = {
     btnCountPlus: () => void
     btnCountReset: () => void
-    num: number | string
-    startValue: number | string
+    num: number 
+    startValue: number 
     maxValue: number
-    changeComponent: ()=>void
+
 }
 
 const Counter: React.FC<CounterPropsType> = (props) => {
-    const {num, btnCountPlus, btnCountReset, changeComponent,  startValue, maxValue, ...restProps} = props
+    const {num, btnCountPlus, btnCountReset,   startValue, maxValue, ...restProps} = props
     return (
         <div className={s.wrapper}>
 
@@ -39,21 +38,8 @@ const Counter: React.FC<CounterPropsType> = (props) => {
                     disabled={!num ? true : false}
                     className={s.wrapperBtn}
                 />
-                <SuperButton
-                    callback={changeComponent}
-                    name={'Set'}
-                    // disabled={!num ? true : false}
-                    className={s.wrapperBtn}
-                />
 
-                {/*<NavLink to='/Settings' className={(isActive) => isActive ? s.active : s.item}>*/}
-                {/*    <SuperButton*/}
-                {/*        callback={changeComponent}*/}
-                {/*        name={'Set'}*/}
-                {/*        // disabled={!num ? true : false}*/}
-                {/*        className={s.wrapperBtn}*/}
-                {/*    />*/}
-                {/*</NavLink>*/}
+
             </div>
 
         </div>
