@@ -5,24 +5,30 @@ import {SuperButton} from "./SuperButton";
 type CounterPropsType = {
     btnCountPlus: () => void
     btnCountReset: () => void
-    num: number 
-    startValue: number 
+    num: number
+    startValue: number
     maxValue: number
-
+    errorMessage: string
 }
 
 const Counter: React.FC<CounterPropsType> = (props) => {
-    const {num, btnCountPlus, btnCountReset,   startValue, maxValue, ...restProps} = props
+    const {num, btnCountPlus, btnCountReset, startValue, maxValue, errorMessage, ...restProps} = props
     return (
         <div className={s.wrapper}>
 
             <div className={s.wrapperCount}>
                 {<span
-                    className={`${num >= maxValue ? s.countColorRed : ''}` ||
+                    className={
+                        `${num >= maxValue ? s.countColorRed : ''}` ||
                         `${maxValue < 0 ? s.countColorRed : ''}` ||
                         `${startValue < 0 ? s.countColorRed : ''}`
+                    }>
+                    {
+                        errorMessage ? errorMessage
+                        : num === 0 ? 'Enter values'
+                            : num
                     }
-                >{num === 0 ? 'Enter values' : num}</span>}
+                </span>}
             </div>
 
             <div className={s.buttonWrapper}>

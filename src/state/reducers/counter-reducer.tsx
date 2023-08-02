@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type CountIncActionType = { type: 'INCREMENT' }
-export type CountResetActionType = { type: 'RESET' }
+export type CountResetActionType = { type: 'RESET' , startValue: number}
 export type CountSetStartValueActionType = { type: 'SET_START_VALUE', startValue: number }
 export type CountSetMaxValueActionType = { type: 'SET_MAX_VALUE', maxValue: number }
 export type CountErrorValueActionType = { type: 'ERROR_VALUE', errorMessage: string }
@@ -29,7 +29,7 @@ export const counterReducer = (state: CounterStateType, action: ActionsType): Co
             return {...state, num: state.num + 1};
         }
         case 'RESET': {
-            return {...state, num: 0}
+            return {...state, num: action.startValue}
         }
         case 'SET_START_VALUE': {
             return {...state, startValue: action.startValue}
@@ -52,8 +52,8 @@ export const counterReducer = (state: CounterStateType, action: ActionsType): Co
 export const countIncAC = (): CountIncActionType => {
     return {type: 'INCREMENT'}
 }
-export const countResetAC = (): CountResetActionType => {
-    return {type: 'RESET'}
+export const countResetAC = (startValue: number): CountResetActionType => {
+    return {type: 'RESET', startValue}
 }
 export const countSetStartValueAC = (startValue: number): CountSetStartValueActionType => {
     return {type: 'SET_START_VALUE', startValue}

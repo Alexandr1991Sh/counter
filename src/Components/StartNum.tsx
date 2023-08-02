@@ -10,20 +10,17 @@ type CounterPropsType = {
     maxValue: number
     num: number | string
     set: () => void
-    // validation:(value: number)=>void
 }
 
 const StartNum: React.FC<CounterPropsType> = (props) => {
-    const { setMaxValue, setStartValue, startValue,  maxValue, set, ...restProps} = props
+    const { setMaxValue,  setStartValue, startValue,  maxValue, set, ...restProps} = props
 
     const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setStartValue(Number(e.currentTarget.value))
-        // validation(Number(e.currentTarget.value))
     }
 
     const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setMaxValue(Number(e.currentTarget.value))
-        // validation(Number(e.currentTarget.value))
     }
 
     const isIncorrectMaxValues = (maxValue < 0 || startValue === maxValue) && startValue !== 0 && maxValue !== 0
