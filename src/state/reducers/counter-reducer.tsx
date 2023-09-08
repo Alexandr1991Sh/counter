@@ -8,7 +8,7 @@ export type CountErrorValueActionType = { type: 'ERROR_VALUE', errorMessage: str
 export type SetValuesActionType = { type: 'SET' }
 
 
-type CounterStateType = {
+export type CounterStateType = {
     num: number;
     startValue: number;
     maxValue: number;
@@ -23,7 +23,14 @@ type ActionsType = CountIncActionType
     | CountSetMaxValueActionType
     | SetValuesActionType
 
-export const counterReducer = (state: CounterStateType, action: ActionsType): CounterStateType => {
+const initialState: CounterStateType = {
+    startValue: 0,
+    maxValue: 5,
+    num: 0,
+    errorMessage: "",
+}
+
+export const counterReducer = (state: CounterStateType = initialState , action: ActionsType): CounterStateType => {
     switch (action.type) {
         case 'INCREMENT': {
             return {...state, num: state.num + 1};
